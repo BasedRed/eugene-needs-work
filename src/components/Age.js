@@ -69,40 +69,40 @@ const Age = () => {
 };
 
 const StyledAge = styled(motion.div)`
-
-font-size: 2rem;
-font-weight: 700;
-color: white;
-min-height: 90vh;
-padding: 2rem 3rem;
-/* display: flex;
+  font-size: 2rem;
+  font-weight: 700;
+  color: white;
+  min-height: 90vh;
+  padding: 2rem 3rem;
+  /* display: flex;
 flex-direction: column;
 align-items: center;
 justify-content: center; */
 
-.age-right{
-  font-size: 1.8rem;
-}
-
-button {
-  position: absolute;
-  left: 50vw;
-  top: 50vh;
-  transform: translateX(-50%) translateY(-50%);
-  padding: 1rem 2rem;
-  cursor: pointer;
-  background: none;
-  color: white;
-  transition: 0.3s;
-  border: solid 3px white;
-
-  &:hover{
-    background-color: white;
-    color: black;
+  .age-right {
+    font-size: 1.8rem;
   }
-}
 
-`
+  button {
+    position: absolute;
+    left: 50vw;
+    top: 50vh;
+    transform: translateX(-50%) translateY(-50%);
+    padding: 1rem 2rem;
+    cursor: pointer;
+    background: none;
+    color: white;
+    transition: 0.3s;
+    border: solid 3px white;
+
+    &:hover {
+      background-color: white;
+      color: black;
+    }
+  }
+
+ 
+`;
 
 const StyledHide = styled.div`
 overflow: hidden;

@@ -47,8 +47,8 @@ const Video = () => {
 
   return (
     <div className="video">
-      <h2>Video</h2>
-      <p>Here you can see a majestic work of art</p>
+      {/* <h2>Video</h2>
+      <p>Here you can see a majestic work of art</p> */}
       {/* <StyledVid>
       <video controls>
         <source src={video1} type="video/mp4" />
