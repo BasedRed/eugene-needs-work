@@ -5,16 +5,18 @@ import GlobalStyle from "./components/GlobalStyle";
 import Age from "./components/Age";
 import Game from "./components/Game";
 import Video from "./components/Video";
+import Skills from "./components/Skills";
 
 function App() {
-  const [showNum, setShowNum] = useState(2);
+  const [showNum, setShowNum] = useState(3);
 
   return (
     <div className="App">
       <GlobalStyle />
-      {showNum === 1 ? <Age /> : null}
-      {showNum === 2 ? <Game /> : null}
-      {showNum === 3 ? <Video /> : null}
+      {showNum === 2 ? <Video /> : null}
+      {showNum === 3 ? <Game setShowNum={setShowNum} /> : null}
+      {showNum === 4 ? <Skills setShowNum={setShowNum} /> : null}
+      {showNum === 5 ? <Age /> : null}
 
       <button
         onClick={() => {

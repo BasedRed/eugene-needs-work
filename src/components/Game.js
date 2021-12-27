@@ -1,20 +1,40 @@
 import React, { useState, useEffect, useRef } from "react";
 import styled from "styled-components";
 
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import Lottie from "lottie-web";
 
-const Game = () => {
+const Game = ({ setShowNum }) => {
   const [showCloud, setShowCloud] = useState(true);
   const container = useRef(null);
   const containerCloud = useRef(null);
   const [coordX, setCoordX] = useState();
+  //Lets create consts for our text
+  const [currentText, setCurrentText] = useState(0);
+  //Let's create a const for clicking once
+  const [isClicked, setIsClicked] = useState(false);
   let windowWidth = window.innerWidth / 5; //Width of our screen in a variable
+
+  //Let's create a function that will change our text when we try to get the courrier from the cloud
+  const changeText = () => {
+    if (!isClicked) {
+      setTimeout(() => {
+        // console.log("Changed text to #2");
+        setCurrentText(currentText + 1);
+      }, 3000);
+
+      setTimeout(() => {
+        // console.log("Changed text to #3");
+        setCurrentText(currentText + 2);
+      }, 10000);
+
+      setIsClicked(true);
+    }
+  };
 
   //Here we create a function that will update our screen size each time it changes.
   React.useEffect(() => {
     function handleResize() {
-     
       windowWidth = window.innerWidth / 5;
     }
 
@@ -22,12 +42,13 @@ const Game = () => {
   });
 
   useEffect(() => {
+    // console.log('Creating lottie');
     Lottie.loadAnimation({
       container: container.current,
       renderer: "svg",
       loop: true,
       autoplay: true,
-      animationData: require("../lottie/driver02.json"),
+      animationData: require("../lottie/driver03.json"),
     });
 
     Lottie.loadAnimation({
@@ -40,30 +61,37 @@ const Game = () => {
 
     return () => {
       Lottie.destroy();
+      // console.log('Destroyed Lottie')
     };
   }, []);
 
-
-  
-
   const titleAnimation = {
-
     initial: {
       y: -100,
-      opacity: 0
+      opacity: 0,
     },
     animate: {
       y: 0,
       opacity: 1,
       transition: {
         duration: 1,
-        ease: 'easeOut',
+        ease: "easeOut",
         delayChildren: 0.4,
         staggerChildren: 2,
-      }
-    }
+      },
+    },
 
+    exit: {
+      y: -100,
+      opacity: 0,
+      transition: {
+        duration: 2,
+      },
+    },
+  };
 
+  const completelyChangePage = () => {
+    setShowNum(4);
   };
 
   return (
@@ -74,21 +102,61 @@ const Game = () => {
             variants={titleAnimation}
             initial="initial"
             animate="animate"
+            exit="exit"
             className="empty-flex"
           >
-            <motion.h2 variants={titleAnimation}>Hey there!</motion.h2>
-            <motion.h2 variants={titleAnimation}>
-              This guy down below is Eugene.
-            </motion.h2>
-            <motion.h2 variants={titleAnimation}>
-              Right now he works as a Wolt courier.
-            </motion.h2>
-            <motion.h2 variants={titleAnimation}>
-              <br />
-              <br />
-              &larr; You can drag him &#8594;
-            </motion.h2>
+            {/* Page #1 */}
+            {currentText === 0 ? (
+              <div>
+                <motion.h2 variants={titleAnimation}>Hey there!</motion.h2>
+
+                <motion.h2 variants={titleAnimation}>
+                  This guy down below is Eugene.
+                </motion.h2>
+
+                <motion.h2 variants={titleAnimation}>
+                  Right now he works as a Wolt courier.
+                </motion.h2>
+
+                <motion.h2 variants={titleAnimation}>
+                  <br />
+                  <br />
+                  &larr; You can drag him &#8594;
+                </motion.h2>
+              </div>
+            ) : null}
+
+            {/* Page #2 */}
+            {currentText === 1 ? (
+              <motion.div variants={titleAnimation}>
+                <motion.h2 variants={titleAnimation}>Oh no!</motion.h2>
+                <motion.h2 variants={titleAnimation}>
+                  A rainy cloud! Move Eugene away!
+                </motion.h2>
+              </motion.div>
+            ) : null}
+
+            {/* Page #3 */}
+            {currentText === 2 ? (
+              <motion.div variants={titleAnimation}>
+                <motion.h2 variants={titleAnimation}>
+                  Seems like it doesn't help much..
+                </motion.h2>
+                <motion.h2 variants={titleAnimation}>
+                  Maybe you can help Eugene find a new work?
+                </motion.h2>
+                <br />
+                <motion.button
+                  onClick={() => completelyChangePage()}
+                  variants={titleAnimation}
+                  className="final-button"
+                >
+                  Look at his frontend skills
+                </motion.button>
+              </motion.div>
+            ) : null}
           </motion.div>
+
           <motion.div
             initial={{ x: -600 }}
             animate={{ x: 0 }}
@@ -104,6 +172,7 @@ const Game = () => {
               setTimeout(setShowCloud(true), 500);
 
               setCoordX(info.point.x - window.innerWidth / 2.5);
+              changeText();
             }}
           >
             <motion.div className="container" ref={container}></motion.div>
@@ -153,12 +222,14 @@ const StyledGame = styled.div`
     text-align: center;
   }
 
-  h2{
+  h2 {
     padding: 1rem 0rem;
   }
   .container-draggable {
     padding: 0;
+    margin-bottom: 1%;
     width: 25%;
+    cursor: pointer;
   }
 
   .containerCloud {
@@ -175,17 +246,28 @@ const StyledGame = styled.div`
     pointer-events: none;
   }
 
+  .final-button {
+    padding: 1rem 2rem;
+    cursor: pointer;
+    background: none;
+    color: white;
+    transition: 0.3s;
+    border: solid 3px white;
+
+    &:hover {
+      background-color: white;
+      color: black;
+    }
+  }
+
   @media only screen and (max-width: 600px) {
+    .container-02 {
+      width: 80vw;
+    }
 
-.container-02 {
-  width: 80vw;
-}
-
-    /* .containerCloud {
-      
-      bottom: -40px;
-     
-    } */
+    .containerCloud {
+      bottom: -5%;
+    }
   }
 `;
 
