@@ -245,7 +245,9 @@ const StyledGame = styled.div`
   }
 
   .container {
-    -webkit-transform: scale(scaleX(-2), scaleY(2));
+    /* -webkit-transform: scale(scaleX(-2), scaleY(2)); */
+    -webkit-transform: scaleY(2);
+    -webkit-transform: scaleX(-2);
     transform: scaleX(-200%) scaleY(200%);
 
     pointer-events: none;
