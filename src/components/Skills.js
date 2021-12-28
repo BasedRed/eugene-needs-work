@@ -37,10 +37,7 @@ const Skills = ({ setShowNum }) => {
     setOnceClicked(true);
   };
 
-  const changeThemeToCreative = () => {
-    setIsSwitched(!isSwitched);
-    setOnceClicked(true);
-  };
+ 
 
   const changePage = () => {
     setShowNum(5);
@@ -246,7 +243,7 @@ const Skills = ({ setShowNum }) => {
                 </a>
                 <p>
                   Also I've made this video{" "}
-                  {windowWidth > 600 ? "on the right →" : "down below 🠓"}
+                  {windowWidth > 600 ? `on the right →` : "down below 🠓"}
                 </p>
               </div>
               <div className="vimeo-container">
@@ -269,6 +266,7 @@ const StyledSkills = styled.div`
   .optional-h3 {
     color: white;
     font-weight: 200;
+    padding-bottom: 0.5rem;
   }
 
   .title-left {
@@ -304,9 +302,10 @@ const StyledSkills = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+
   .headline {
     color: white;
-    padding: 1rem 0rem;
+    padding-top: 1rem;
   }
   .skill-table {
     width: 90vw;

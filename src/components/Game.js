@@ -245,6 +245,7 @@ const StyledGame = styled.div`
   }
 
   .container {
+    -webkit-transform: scaleX(-200%) scaleY(200%);
     transform: scaleX(-200%) scaleY(200%);
 
     pointer-events: none;
@@ -266,7 +267,7 @@ const StyledGame = styled.div`
 
   .skip {
     font-size: 0.5rem;
-    margin-top: .75rem;
+    margin-top: 0.75rem;
     padding: 0.5rem 1rem;
     cursor: pointer;
     background: none;
@@ -283,6 +284,7 @@ const StyledGame = styled.div`
   @media only screen and (max-width: 600px) {
     .container-02 {
       width: 80vw;
+      /* height: 85vh; */
     }
 
     .containerCloud {
