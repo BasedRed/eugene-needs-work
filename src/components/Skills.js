@@ -12,6 +12,7 @@ const Skills = ({ setShowNum }) => {
   let width = window.innerWidth;
   const [isSwitched, setIsSwitched] = useState(true);
   const [windowWidth, setWindowWidth] = useState(width);
+  const [onceClicked, setOnceClicked] = useState(false);
 
   React.useEffect(() => {
     function handleResize() {
@@ -24,6 +25,21 @@ const Skills = ({ setShowNum }) => {
 
   const changeTheme = () => {
     setIsSwitched(!isSwitched);
+    setOnceClicked(true);
+  };
+
+  const changeThemeToTech = () => {
+    if (!onceClicked) {
+      setIsSwitched(true);
+    } else {
+      setIsSwitched(!isSwitched);
+    }
+    setOnceClicked(true);
+  };
+
+  const changeThemeToCreative = () => {
+    setIsSwitched(!isSwitched);
+    setOnceClicked(true);
   };
 
   const changePage = () => {
@@ -33,12 +49,13 @@ const Skills = ({ setShowNum }) => {
   return (
     <StyledSkills>
       <h2 className="headline">S K I L L S</h2>
+      {!onceClicked && <h3 className="optional-h3">(click one of them)</h3>}
       <div className="skill-table">
         <div
-          onClick={() => changeTheme()}
+          onClick={() => changeThemeToTech()}
           className="left"
           style={{
-            flex: isSwitched ? 15 : 1,
+            flex: isSwitched && onceClicked ? 15 : 1,
             // order: isSwitched ? 1 : 0, // **** THIS IS AN IMPORTANT LINE, MAYBE SHOULD BE ADDED
             backgroundColor: isSwitched ? "" : "white",
           }}
@@ -76,7 +93,7 @@ const Skills = ({ setShowNum }) => {
             </span>
           </div>
 
-          {isSwitched && (
+          {isSwitched && onceClicked && (
             <div className="info-left">
               <h2>Languages:</h2>
               <p>JAVASCRIPT, HTML, CSS, Typescript, C#, Python, SQL</p>
@@ -249,6 +266,11 @@ export default Skills;
 // *********** NOW STYLES **************
 
 const StyledSkills = styled.div`
+  .optional-h3 {
+    color: white;
+    font-weight: 200;
+  }
+
   .title-left {
     display: flex;
     /* flex: 0.1; */

@@ -190,7 +190,11 @@ const Game = ({ setShowNum }) => {
           </motion.div>
         )}
       </div>
-      <div className="hide"></div>
+      <div>
+        <button className="skip" onClick={() => completelyChangePage()}>
+          Skip
+        </button>
+      </div>
     </StyledGame>
   );
 };
@@ -253,6 +257,22 @@ const StyledGame = styled.div`
     color: white;
     transition: 0.3s;
     border: solid 3px white;
+
+    &:hover {
+      background-color: white;
+      color: black;
+    }
+  }
+
+  .skip {
+    font-size: 0.5rem;
+    margin-top: .75rem;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    background: none;
+    color: white;
+    transition: 0.3s;
+    border: solid 1px white;
 
     &:hover {
       background-color: white;
