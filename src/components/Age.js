@@ -4,9 +4,9 @@ import styled from "styled-components";
 //Framer-motion
 import { motion } from "framer-motion";
 // import cv
-import cv from '../cv/evgenii_CV.docx';
+import cv from "../cv/Evgeniy_CV.pdf";
 
-const Age = ({setShowNum}) => {
+const Age = ({ setShowNum }) => {
   // First i get all Date info and assign it to variables
   const birth = new Date("02/20/1997");
   //I use UseState with already created variable in it.
@@ -62,10 +62,9 @@ const Age = ({setShowNum}) => {
     });
   }, 2000);
 
-
-   const changePage = () => {
-     setShowNum(4);
-   };
+  const changePage = () => {
+    setShowNum(4);
+  };
 
   return (
     <StyledAge variants={titleAnim} initial="hidden" animate="show">
@@ -108,7 +107,9 @@ const Age = ({setShowNum}) => {
           The counter above shows the most precious thing I have right now -
           youth.
         </p>
-        <p className="last-paragraph">Now hire me before the counter above reaches 25 ooof</p>
+        <p className="last-paragraph">
+          Now hire me before the counter above reaches 25 ooof
+        </p>
       </motion.div>
       <button className="skills-button" onClick={() => changePage()}>
         {" "}
