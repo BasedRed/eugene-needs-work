@@ -8,20 +8,19 @@ import site_04 from "../img/site_04.jpg";
 //Import vimeo
 import VimeoComponent from "./VimeoComponent";
 
-const Skills = ({setShowNum}) => {
+const Skills = ({ setShowNum }) => {
   let width = window.innerWidth;
   const [isSwitched, setIsSwitched] = useState(true);
   const [windowWidth, setWindowWidth] = useState(width);
 
-    React.useEffect(() => {
-      function handleResize() {
-        setWindowWidth(window.innerWidth);
-        // console.log(windowWidth);
-      }
+  React.useEffect(() => {
+    function handleResize() {
+      setWindowWidth(window.innerWidth);
+      // console.log(windowWidth);
+    }
 
-      window.addEventListener("resize", handleResize);
-    });
-
+    window.addEventListener("resize", handleResize);
+  });
 
   const changeTheme = () => {
     setIsSwitched(!isSwitched);
@@ -29,7 +28,7 @@ const Skills = ({setShowNum}) => {
 
   const changePage = () => {
     setShowNum(5);
-  }
+  };
 
   return (
     <StyledSkills>
@@ -96,25 +95,37 @@ const Skills = ({setShowNum}) => {
               <h2 className="project-title">Projects:</h2>
               <div className="projects">
                 <div className="card">
-                  <a href="">
+                  <a
+                    href="https://eugene-portfolio-123.netlify.app/"
+                    target="_blank"
+                  >
                     <div className="card-title"> Eugene's Photography </div>
                     <img src={site_01} alt="" />
                   </a>
                 </div>
                 <div className="card">
-                  <a href="">
+                  <a
+                    href="https://basedred-music-player.netlify.app/"
+                    target="_blank"
+                  >
                     <div className="card-title"> React Music Player </div>
                     <img src={site_02} alt="" />
                   </a>
                 </div>
                 <div className="card">
-                  <a href="">
+                  <a
+                    href="https://frosty-kirch-2d707b.netlify.app/"
+                    target="_blank"
+                  >
                     <div className="card-title"> Vanilla Calc </div>
                     <img src={site_03} alt="" />
                   </a>
                 </div>
                 <div className="card">
-                  <a href="">
+                  <a
+                    href="https://determined-bose-420a95.netlify.app"
+                    target="_blank"
+                  >
                     <div className="card-title"> CSS Visual </div>
                     <img src={site_04} alt="" />
                   </a>
@@ -389,7 +400,7 @@ const StyledSkills = styled.div`
     }
   }
 
-  .project-title{
+  .project-title {
     padding-top: 1rem;
   }
 
@@ -429,9 +440,7 @@ const StyledSkills = styled.div`
       margin-bottom: 2rem;
     }
 
-.button-to-age{
-
-}
-
+    .button-to-age {
+    }
   }
 `;

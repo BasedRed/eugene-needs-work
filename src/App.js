@@ -13,12 +13,12 @@ function App() {
   return (
     <div className="App">
       <GlobalStyle />
-      {showNum === 2 ? <Video /> : null}
+      {/* {showNum === 2 ? <Video /> : null} */}
       {showNum === 3 ? <Game setShowNum={setShowNum} /> : null}
       {showNum === 4 ? <Skills setShowNum={setShowNum} /> : null}
-      {showNum === 5 ? <Age /> : null}
+      {showNum === 5 ? <Age setShowNum={setShowNum} /> : null}
 
-      <button
+      {/* <button
         onClick={() => {
           setShowNum(showNum - 1);
         }}
@@ -31,7 +31,7 @@ function App() {
         }}
       >
         Forward
-      </button>
+      </button> */}
     </div>
   );
 }
