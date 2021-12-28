@@ -124,7 +124,10 @@ const Age = ({ setShowNum }) => {
         <button
           onClick={(e) => {
             e.preventDefault();
-            window.location.href = cv;
+            window.open(
+              "https://docs.google.com/document/d/14gX4TrLb1lGW9x8v_2utliX65kRsX7waPOjUyrFX2Ds/edit?usp=sharing",
+              "_blank"
+            );
           }}
         >
           CV
